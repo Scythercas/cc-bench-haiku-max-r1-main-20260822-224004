@@ -1,0 +1,20 @@
+{
+  "repo_url": "https://github.com/Scythercas/cc-bench-haiku-max-r1-main-20260822-224004",
+  "pages_url": "https://Scythercas.github.io/cc-bench-haiku-max-r1-main-20260822-224004/",
+  "commit_count": 3,
+  "self_check": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true,
+    "F10": true,
+    "F11": true,
+    "F12": true
+  },
+  "notes": "すべての機能を実装・検証しました。HTML内の16種のdata-testid属性はすべて配置されており、動的要素（task-item、task-title、toggle、edit、delete）についてはJavaScriptで実行時に追加されます。localStorage対応、dark mode対応、375pxレスポンシブ対応を確認。JavaScriptはES5互換でpolyfill対応。コンソールエラーはなし。"
+}
