@@ -1,0 +1,511 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #cccccc;
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --button-hover: #0056b3;
+  --accent-high: #dc3545;
+  --accent-medium: #ffc107;
+  --accent-low: #28a745;
+  --completed-bg: #e8f5e9;
+  --completed-text: #555555;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #555555;
+    --input-bg: #2d2d2d;
+    --input-border: #555555;
+    --button-bg: #0d6efd;
+    --button-text: #ffffff;
+    --button-hover: #0a58ca;
+    --accent-high: #e74c3c;
+    --accent-medium: #f39c12;
+    --accent-low: #27ae60;
+    --completed-bg: #1b5e20;
+    --completed-text: #aaaaaa;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: var(--text-primary);
+}
+
+main {
+  width: 100%;
+}
+
+/* 入力フォーム */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.input-section input[type="text"],
+.input-section input[type="date"],
+.input-section select {
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.input-section input[type="text"] {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+.input-section input[type="date"] {
+  flex: 0 1 auto;
+  min-width: 150px;
+}
+
+.input-section select {
+  flex: 0 1 auto;
+  min-width: 80px;
+}
+
+.input-section button {
+  flex: 0 0 auto;
+  padding: 10px 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.input-section button:hover {
+  background-color: var(--button-hover);
+}
+
+.input-section button:active {
+  opacity: 0.8;
+}
+
+.input-section button:focus {
+  outline: 2px solid var(--accent-high);
+  outline-offset: 2px;
+}
+
+/* 統計情報 */
+.stats {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* 絞り込み */
+.filter-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: var(--input-bg);
+}
+
+.filter-btn:focus {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+.filter-btn.active {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-bg);
+}
+
+/* 並べ替え */
+.sort-section {
+  margin-bottom: 20px;
+}
+
+.sort-section select {
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.sort-section select:focus {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+/* タスク一覧 */
+.task-list {
+  margin-bottom: 30px;
+  min-height: 50px;
+}
+
+.task-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.task-item.completed {
+  background-color: var(--completed-bg);
+}
+
+.task-item:hover {
+  border-color: var(--button-bg);
+}
+
+.task-item:focus-within {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+/* チェックボックス */
+.task-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.task-item input[type="checkbox"]:focus {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+/* タスク内容エリア */
+.task-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.task-title {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.task-item.completed .task-title {
+  color: var(--completed-text);
+  text-decoration: line-through;
+}
+
+.task-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.task-due {
+  padding: 4px 8px;
+  background-color: var(--bg-primary);
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.task-priority {
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.task-priority.high {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: var(--accent-high);
+}
+
+.task-priority.medium {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: var(--accent-medium);
+}
+
+.task-priority.low {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: var(--accent-low);
+}
+
+/* タスク操作ボタン */
+.task-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.task-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.task-btn:hover {
+  background-color: var(--input-bg);
+  border-color: var(--button-bg);
+}
+
+.task-btn:focus {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+.task-btn.delete {
+  color: var(--accent-high);
+}
+
+.task-btn.delete:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+/* 編集モード */
+.task-item.edit-mode .task-title-wrapper {
+  display: none;
+}
+
+.task-item.edit-mode .task-meta {
+  display: none;
+}
+
+.edit-input-wrapper {
+  display: none;
+  gap: 8px;
+  flex: 1;
+}
+
+.task-item.edit-mode .edit-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edit-input-wrapper input[type="text"],
+.edit-input-wrapper input[type="date"],
+.edit-input-wrapper select {
+  padding: 8px;
+  border: 1px solid var(--button-bg);
+  border-radius: 3px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.edit-input-wrapper input[type="text"] {
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+.edit-input-wrapper input[type="date"],
+.edit-input-wrapper select {
+  flex: 0 1 auto;
+  min-width: 120px;
+}
+
+.edit-input-wrapper button {
+  padding: 6px 12px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.edit-input-wrapper button:hover {
+  background-color: var(--button-hover);
+}
+
+.edit-input-wrapper button:focus {
+  outline: 2px solid var(--accent-high);
+  outline-offset: 2px;
+}
+
+/* 空状態 */
+.empty-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+/* アクション */
+.action-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.action-section button {
+  padding: 10px 20px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.action-section button:hover {
+  background-color: var(--input-bg);
+  border-color: var(--button-bg);
+}
+
+.action-section button:focus {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .input-section {
+    flex-direction: column;
+  }
+
+  .input-section input[type="text"],
+  .input-section input[type="date"],
+  .input-section select {
+    width: 100%;
+  }
+
+  .input-section button {
+    width: 100%;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-content {
+    width: 100%;
+  }
+
+  .task-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .edit-input-wrapper {
+    flex-direction: column;
+  }
+
+  .edit-input-wrapper input[type="text"],
+  .edit-input-wrapper input[type="date"],
+  .edit-input-wrapper select,
+  .edit-input-wrapper button {
+    width: 100%;
+  }
+}
+
+/* キーボードのみアクセスの確保 */
+button:focus,
+input:focus,
+select:focus {
+  outline: 2px solid var(--button-bg);
+  outline-offset: 2px;
+}
+
+/* 印刷時非表示 */
+@media print {
+  .input-section,
+  .filter-section,
+  .sort-section,
+  .action-section,
+  .task-actions {
+    display: none;
+  }
+}

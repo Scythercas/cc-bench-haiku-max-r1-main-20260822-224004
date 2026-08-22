@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タスク管理アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>タスク管理アプリ</h1>
+    </header>
+
+    <main>
+      <!-- 入力フォーム -->
+      <div class="input-section">
+        <input
+          type="text"
+          id="taskInput"
+          data-testid="task-input"
+          placeholder="タスクを入力"
+          aria-label="タスクのタイトル"
+        >
+        <input
+          type="date"
+          id="dueInput"
+          data-testid="due-input"
+          aria-label="期限日"
+        >
+        <select id="prioritySelect" data-testid="priority-select" aria-label="優先度">
+          <option value="low">低</option>
+          <option value="medium" selected>中</option>
+          <option value="high">高</option>
+        </select>
+        <button id="addButton" data-testid="add-button" aria-label="タスクを追加">追加</button>
+      </div>
+
+      <!-- 統計情報 -->
+      <div class="stats">
+        <span data-testid="remaining-count" aria-label="未完了タスク件数">残り 0 件</span>
+      </div>
+
+      <!-- 絞り込み -->
+      <div class="filter-section">
+        <button id="filterAll" data-testid="filter-all" class="filter-btn active" aria-label="すべてのタスク">すべて</button>
+        <button id="filterActive" data-testid="filter-active" class="filter-btn" aria-label="未完了のタスク">未完了</button>
+        <button id="filterCompleted" data-testid="filter-completed" class="filter-btn" aria-label="完了済みのタスク">完了済み</button>
+      </div>
+
+      <!-- 並べ替え -->
+      <div class="sort-section">
+        <select id="sortSelect" data-testid="sort-select" aria-label="並べ替え順">
+          <option value="created">作成順</option>
+          <option value="due">期限昇順</option>
+          <option value="priority">優先度順</option>
+        </select>
+      </div>
+
+      <!-- タスク一覧 -->
+      <div id="taskList" data-testid="task-list" class="task-list" role="list"></div>
+
+      <!-- 完了済み一括削除 -->
+      <div class="action-section">
+        <button id="clearCompleted" data-testid="clear-completed" aria-label="完了済みタスクを削除">完了済みを削除</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
